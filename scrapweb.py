@@ -330,12 +330,12 @@ for i in range(len(link_peliculas)):
         escrita_por = 'None'
     
     caracteristicas_peliculas = {'Numero': count, 'Nombre': nombre, 'Duracion' : duracion, 
-                                 'Tipo': tipo, 'Año': año, 'Descripcion' : descripcion,
+                                 'Tipo': tipo, 'Año': año, 'Descripcion' : descripcion, 'Link' : link_pelicula_final,
                                  'Reparto': reparto, 'Dirigida' : dirigida_por, 'Escrita' : escrita_por}
     peliculas.append(caracteristicas_peliculas) 
     
     print('\n------------------------------------------------------------')    
-    print('La pelicula: ',nombre, 'de genero: ',tipo, 'es de', duracion, 'minutos.')
+    print('La pelicula: ',nombre, ', Genero: ',tipo, ', Duracion:', duracion)
     print('Ok los datos de la pelicula: ',nombre)
     print('\nRestan: ', len(link_peliculas) - count, ' Peliculas')        
     print('------------------------------------------------------------') 
