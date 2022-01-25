@@ -5,9 +5,9 @@
 
 # Web Scraping starz
 
-El siguiente trabajo consistió en hacer Web Scraping en la pagina de [starz](https://www.starz.com/ar), capturar todas las películas, todas las series con sus temporadas y capítulos y guardar los datos mas relevantes de cada uno en formato <b><span style = "color:yellow">.json</span></b>.
+El siguiente trabajo consistió en hacer Web Scraping en la pagina de [starz](https://www.starz.com/ar), capturar todas las películas, todas las series con sus temporadas y capítulos y guardar los datos mas relevantes de cada uno en formato <b><span style = "color:#e5f048">.json</span></b> .
 
-Una vez terminado el Web Scraping se guardan los archivos <b><span style = "color:yellow">.json</span></b>, se hace un grafico de barras para las peliculas y series para visualizar los generos de cada una y por ultimo se ejecuta un comando para insertar los datos a <b><span style = "color:green">MongoDB</span></b>.
+Una vez terminado el Web Scraping se guardan los archivos <b><span style = "color:#e5f048">.json</span></b> , se hace un grafico de barras para las peliculas y series para visualizar los generos de cada una y por ultimo se ejecuta un comando para insertar los datos a <b><span style = "color:#58b54c">MongoDB</span></b> .
 
 
 # Librerias Utilizadas
