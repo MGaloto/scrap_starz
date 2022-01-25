@@ -11,7 +11,7 @@
 
 
 <p align="center">
-<img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/STARZPLAY.png" alt="react" width="250" height="200" />
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Starzplay-logo.svg/1024px-Starzplay-logo.svg.png" alt="react" width="250" height="200" />
 </p>
 
 
