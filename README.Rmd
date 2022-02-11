@@ -1,4 +1,4 @@
-<p align="left">
+<p align="center">
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/200px-Python-logo-notext.svg.png" alt="react" width="25" height="25" />
 <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Selenium_Logo.png" alt="react" width="25" height="25" />
 </p>
@@ -50,15 +50,60 @@ Una vez terminado el Web Scraping se guardan los archivos <b><span style = "colo
 
 </ui>
 
-# Graficos de barras:
+# Grafico de Torta:
 
-Películas:
 
-![.](Imagenes/grafico_barras_peliculas.png)
 
-Series:
 
-![.](Imagenes/grafico_barras_series.png)
+```{r, warning=FALSE, message=FALSE}
+
+
+library(dplyr)  
+library(plotly)
+library(readr)
+library(ggplot2)
+library(viridisLite)
+library(dplyr)
+library(tidyverse)
+library(ggthemes)
+library(lubridate)
+library(highcharter)
+
+df_series = read.csv('series.csv')
+
+
+df_series = data.frame(table(df_series$Tipo))
+
+
+colnames(df_series) = c('Genero','Frecuencia')
+
+
+
+
+```
+
+
+
+
+```{r, echo=TRUE, fig.cap= 'Pie Chart'}
+
+pie = df_series %>% 
+  hchart('pie', hcaes(x = Genero, y = Frecuencia, color = viridis::mako(n = length(df_series$Genero)))) %>% 
+  hc_add_theme(hc_theme_google()) %>% 
+  hc_tooltip(pointFormat = '<b>Cantidad Diagnostico</b>  {point.y}') %>% 
+  hc_title(text = 'Pie Chart Genero Series Starz',
+           style = list(fontSize = '20px', fontWeight = 'bold')) %>% 
+  hc_subtitle(text = '<b></b>',
+              style = list(fontSize = '16px', color = "black")) %>% 
+  hc_credits(enabled = TRUE, text = '@MGaloto',
+             style = list(fontSize = '16px', color = "black")) 
+
+pie
+
+```
+
+
+
 
 
 # MongoDB:
