@@ -21,7 +21,7 @@ from datetime import date
 options = webdriver.ChromeOptions()
 options.add_argument("--incognito") # Abrimos Chrome utilizando Incognito.
 driver = webdriver.Chrome('chromedriver.exe', options = options)
-url = 'https://www.starz.com/ar/es/view-all/blocks/1523514'
+url = 'https://www.starz.com/ar/es/view-all/blocks/1579115'
 driver.get(url)
 sleep(4) # Le doy tiempo a la pagina para luego capturar el html
 html = driver.execute_script('return document.documentElement.outerHTML')
@@ -151,7 +151,9 @@ for i in range(len(links)):
         sleep(2)
         
         capitulos_div = dom.find_all('div', attrs = {'class': "col-12 col-sm-6 col-lg-9 align-self-center"})  
+        counter = 0
         for capitulo in capitulos_div:
+            counter += 1
             nombre_capitulo = capitulo.find('h6', attrs = {'class': "title"}).text
             
             # Con las expresiones regulares capturamos el numero de la temporada desde la url
@@ -161,7 +163,7 @@ for i in range(len(links)):
             minutos = capitulo.find('li').find_next_sibling("li").text
             descripcion = capitulo.find('p', lines='2').text
             
-            capitulos = {'Numero': temporada, 'Capitulo': nombre_capitulo, 'Duracion' : minutos, 'Descripcion' : descripcion}
+            capitulos = {'Numero': temporada, 'Capitulo': nombre_capitulo, 'Duracion' : minutos, 'Descripcion' : descripcion, 'Serie': nombre, 'NumeroCapitulo': counter}
             
             temporadas.append(capitulos)
             
@@ -180,7 +182,7 @@ for i in range(len(links)):
     print('Ok los datos de la serie: ',nombre)
     print('\nRestan: ', len(links) - count, ' Series')        
     print('------------------------------------------------------------')   
-    
+
 
     
 print('Fin del Scrap de Series')
@@ -192,7 +194,7 @@ print('Fin del Scrap de Series')
 
 # Guardar archivo Json
 
-with open('series.json', 'w') as archivo_json_series:
+with open('seriesnuevo.json', 'w', encoding='utf-8') as archivo_json_series:
     json.dump(diccionario, archivo_json_series, ensure_ascii=False, indent = 2)
 
 
@@ -401,7 +403,46 @@ bar_graph.show()
 #%%
 
 
+import json
 
+pelis = json.load(open('peliculas.json', encoding='utf-8'))
+
+
+series = json.load(open('seriesnuevo.json', encoding='utf-8'))
+
+
+
+#%%
+
+
+
+episodios = []
+
+
+for i in range(len(series)):
+    episodios.append(series[i]['Temporadas'])
+    
+
+episodio = []
+
+for i in range(len(episodios)):
+    episod = episodios[i]
+    len_episodios = len(episod)
+    for i in range(len_episodios):
+        print(episod[i]['Numero'])
+        print(episod[i]['Capitulo'])
+        print(episod[i]['Duracion'])
+        print(episod[i]['Descripcion'])
+        print(episod[i]['Serie'])
+        print(episod[i]['NumeroCapitulo'])
+        epi = [{ 'Numero' : episod[i]['Numero'],
+             'Capitulo' : episod[i]['Capitulo'],
+             'Duracion' : episod[i]['Duracion'],
+             'Descripcion' : episod[i]['Descripcion'],
+             'Serie': episod[i]['Serie'],
+             'NumeroCapitulo':episod[i]['NumeroCapitulo']}]
+        episodio.append(epi)
+    
 
 
 
